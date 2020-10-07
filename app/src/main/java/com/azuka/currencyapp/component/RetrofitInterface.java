@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface RetrofitInterface {
-    @GET("/latest?base=USD")
+    @GET("/latest?base={currency}")
     Call<JsonObject> getExchangeCurrency(@Path("currency") String currency);
 }
