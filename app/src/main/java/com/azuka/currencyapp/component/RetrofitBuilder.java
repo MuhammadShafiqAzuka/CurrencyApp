@@ -9,10 +9,9 @@ public class RetrofitBuilder {
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://api.exchangerate-api.com/")
+                    .baseUrl("https://v6.exchangerate-api.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-
         }
         return retrofit;
     }
