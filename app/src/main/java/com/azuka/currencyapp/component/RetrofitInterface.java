@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
-    @GET("latest?base=EUR HTTP/1.1")
+    @GET("v4/latest/{currency}")
     Call<JsonObject> getExchangeCurrency(@Query("currency") String currency);
 }
