@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "503151650767",
+    "firebase_url": "https://fir-notification-a9299.firebaseio.com",
+    "project_id": "fir-notification-a9299",
+    "storage_bucket": "fir-notification-a9299.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503151650767:android:222bcd5ff53937adfbd4ba",
+        "android_client_info": {
+          "package_name": "com.azuka.android.firebasenotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503151650767-82ef602k66fp293j8e1a0j04vq71k6o3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azuka.android.firebasenotification",
+            "certificate_hash": "9f353f5cc42e2948e7d61f984ee763cb66c8c809"
+          }
+        },
+        {
+          "client_id": "503151650767-ffi7k28s7rfshogci2ln30kjrm79a3v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzifwPNxucBn7pe1Zb5efR76bEe7n034c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503151650767-ffi7k28s7rfshogci2ln30kjrm79a3v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503151650767:android:0ed93c72295b5d9cfbd4ba",
+        "android_client_info": {
+          "package_name": "com.azuka.android.hometrackingapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503151650767-j7s9462uk63ad6usdkuov6k035k96h5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azuka.android.hometrackingapps",
+            "certificate_hash": "9f353f5cc42e2948e7d61f984ee763cb66c8c809"
+          }
+        },
+        {
+          "client_id": "503151650767-ffi7k28s7rfshogci2ln30kjrm79a3v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzifwPNxucBn7pe1Zb5efR76bEe7n034c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503151650767-ffi7k28s7rfshogci2ln30kjrm79a3v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503151650767:android:8a6c0a4d8f9f11ebfbd4ba",
+        "android_client_info": {
+          "package_name": "com.azuka.currencyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503151650767-ffi7k28s7rfshogci2ln30kjrm79a3v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzifwPNxucBn7pe1Zb5efR76bEe7n034c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503151650767-ffi7k28s7rfshogci2ln30kjrm79a3v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
