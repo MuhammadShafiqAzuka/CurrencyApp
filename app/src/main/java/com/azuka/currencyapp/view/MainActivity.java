@@ -32,19 +32,15 @@ public class MainActivity extends AppCompatActivity {
     EditText currencyConverted;
     Spinner convertToDropdown;
     Spinner convertFromDropdown;
-
     //firebase
     DatabaseReference RootRef;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         InitializeVariables();
         CurrencyChange();
-
     }
 
     private void InitializeVariables() {
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 
         //Adding Functionality
-        String[] dropDownList = {"EUR", "INR", "USD", "NZD"};
+        String[] dropDownList = {"USD", "SGD", "EUR", "MYR", "CNY", "GBP", "AUD"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, dropDownList);
         convertToDropdown.setAdapter(adapter);
         convertFromDropdown.setAdapter(adapter);
@@ -76,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(@NotNull Call<JsonObject> call, @NotNull Response<JsonObject> response) {
                     JsonObject res = response.body();
                     assert res != null;
-                    JsonObject rates = res.getAsJsonObject("rates");
+                    JsonObject rates = res.getAsJsonObject("conversion_rates");
                     double currency = Double.parseDouble(currencyToBeConverted.getText().toString());
                     double multiplier = Double.parseDouble(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
                     double result = currency * multiplier;
@@ -84,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     currencyConverted.setText(precision.format(result));
                     SaveToDatabase(currency, result);
                 }
-
                 @Override
                 public void onFailure(@NotNull Call<JsonObject> call, @NotNull Throwable t) {
                 }
