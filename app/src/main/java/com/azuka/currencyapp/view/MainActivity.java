@@ -1,6 +1,10 @@
 package com.azuka.currencyapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +31,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
+    Button button, buttonChart;
     EditText currencyToBeConverted;
     EditText currencyConverted;
     Spinner convertToDropdown;
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         InitializeVariables();
         CurrencyChange();
+        ShowChart();
+
     }
 
     private void InitializeVariables() {
@@ -51,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         convertToDropdown = findViewById(R.id.convert_to);
         convertFromDropdown = findViewById(R.id.convert_from);
         button = findViewById(R.id.button);
+        buttonChart = findViewById(R.id.button_chart);
 
         //Adding Functionality
         String[] dropDownList = {"EUR", "SGD", "USD", "MYR", "CNY", "GBP", "AUD"};
@@ -80,8 +87,33 @@ public class MainActivity extends AppCompatActivity {
                     currencyConverted.setText(precision.format(result));
                     SaveToDatabase(currency, result);
                 }
+
                 @Override
                 public void onFailure(@NotNull Call<JsonObject> call, @NotNull Throwable t) {
+                }
+            });
+        });
+    }
+
+    private void ShowChart() {
+        buttonChart.setOnClickListener(view -> {
+            RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
+            Call<JsonObject> callChart = retrofitInterface.getLatestChart("7");
+            callChart.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    JsonObject res = response.body();
+                    assert res != null;
+                    JsonObject days = res.getAsJsonObject("date");
+                    String startDate = currencyToBeConverted.getText().toString();
+                    String endDate = convertToDropdown.getSelectedItem().toString();
+                    DecimalFormat precision = new DecimalFormat("0.00");
+                    currencyConverted.setText(precision.format(days.entrySet()));
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+
                 }
             });
         });
@@ -104,5 +136,26 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> Toast.makeText(MainActivity.this, "Value Added", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menuRefresh) {
+            //Toast.makeText(this, "Refresh..", Toast.LENGTH_SHORT).show();
+            Intent intent = getIntent();
+            overridePendingTransition(0, 0);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -101,6 +101,17 @@
         android:text="Convert"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/button_chart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/custom_button"
+        android:text="Chart"
+        android:textColor="@android:color/white" />
+
     <EditText
         android:id="@+id/currency_converted"
         android:layout_width="250dp"
