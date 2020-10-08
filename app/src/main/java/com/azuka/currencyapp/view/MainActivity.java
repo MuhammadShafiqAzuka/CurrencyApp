@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 
         //Adding Functionality
-        String[] dropDownList = {"USD", "SGD", "EUR", "MYR", "CNY", "GBP", "AUD"};
+        String[] dropDownList = {"EUR", "SGD", "USD", "MYR", "CNY", "GBP", "AUD"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, dropDownList);
         convertToDropdown.setAdapter(adapter);
         convertFromDropdown.setAdapter(adapter);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(@NotNull Call<JsonObject> call, @NotNull Response<JsonObject> response) {
                     JsonObject res = response.body();
                     assert res != null;
-                    JsonObject rates = res.getAsJsonObject("conversion_rates");
+                    JsonObject rates = res.getAsJsonObject("rates");
                     double currency = Double.parseDouble(currencyToBeConverted.getText().toString());
                     double multiplier = Double.parseDouble(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
                     double result = currency * multiplier;
