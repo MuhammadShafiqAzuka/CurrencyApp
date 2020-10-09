@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -81,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
                     JsonObject res = response.body();
                     assert res != null;
                     JsonObject rates = res.getAsJsonObject("rates");
-                    double currency = Double.parseDouble(currencyToBeConverted.getText().toString());
+                    double value = Double.parseDouble(currencyToBeConverted.getText().toString());
                     double multiplier = Double.parseDouble(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
-                    double result = currency * multiplier;
+                    double result = value * multiplier;
                     DecimalFormat precision = new DecimalFormat("0.00");
                     currencyConverted.setText(precision.format(result));
-                    SaveToDatabase(currency, result);
+                    SaveToDatabase(value, result);
                 }
 
                 @Override
@@ -98,19 +99,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ShowChart() {
-        buttonChart.setOnClickListener(view -> {
+        /*buttonChart.setOnClickListener(view -> {
             RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
-            Call<JsonObject> callChart = retrofitInterface.getLatestChart("7");
+            Call<JsonObject> callChart = retrofitInterface.getLatestChart(convertFromDropdown.getSelectedItem().toString());
             callChart.enqueue(new Callback<JsonObject>() {
                 @Override
                 public void onResponse(@NotNull Call<JsonObject> call, @NotNull Response<JsonObject> response) {
                     JsonObject res = response.body();
                     assert res != null;
                     JsonObject days = res.getAsJsonObject("date");
-                    String startDate = currencyToBeConverted.getText().toString();
-                    String endDate = convertToDropdown.getSelectedItem().toString();
+                    double multiplier = Double.parseDouble(days.get(convertToDropdown.getSelectedItem().toString()).toString());
                     DecimalFormat precision = new DecimalFormat("0.00");
-                    currencyConverted.setText(precision.format(days.entrySet()));
+                    currencyConverted.setText(precision.format(multiplier));
                 }
 
                 @Override
@@ -118,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Error Response: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        });*/
+        buttonChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Under Dev", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
