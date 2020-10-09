@@ -8,8 +8,8 @@ import retrofit2.http.Query;
 
 public interface RetrofitInterface {
     @GET("latest")
-    Call<JsonObject> getExchangeCurrency(@Query("?base=USD") String currency);
+    Call<JsonObject> getExchangeCurrency(@Query("?base={currency}") String currency);
 
     @GET("history")
-    Call<JsonObject> getLatestChart(@Query("?start_at=2020-10-08&end_at=2020-10-01") String days);
+    Call<JsonObject> getLatestChart(@Query("?start_at=2020-10-08&end_at=2020-10-01&base={currency}") String currency);
 }
