@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void CurrencyChange() {
         button.setOnClickListener(v -> {
+            //Initialize Retrofit and call it
             RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
             Call<JsonObject> call = retrofitInterface.getExchangeCurrency(convertFromDropdown.getSelectedItem().toString());
             call.enqueue(new Callback<JsonObject>() {
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(@NotNull Call<JsonObject> call, @NotNull Throwable t) {
+                    Toast.makeText(MainActivity.this, "Error Response: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             Call<JsonObject> callChart = retrofitInterface.getLatestChart("7");
             callChart.enqueue(new Callback<JsonObject>() {
                 @Override
-                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                public void onResponse(@NotNull Call<JsonObject> call, @NotNull Response<JsonObject> response) {
                     JsonObject res = response.body();
                     assert res != null;
                     JsonObject days = res.getAsJsonObject("date");
@@ -112,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<JsonObject> call, Throwable t) {
-
+                public void onFailure(@NotNull Call<JsonObject> call, @NotNull Throwable t) {
+                    Toast.makeText(MainActivity.this, "Error Response: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });
