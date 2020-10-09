@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "94878172463",
+    "firebase_url": "https://currencyapp-728a0.firebaseio.com",
+    "project_id": "currencyapp-728a0",
+    "storage_bucket": "currencyapp-728a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94878172463:android:d9f81e719f494c97c38dda",
+        "android_client_info": {
+          "package_name": "com.azuka.currencyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94878172463-mj0ripbj6vk5dcbu06acu1dbakn79h3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSkhtgj_CUHPD6IgflHVZaFrXPdsVGGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94878172463-mj0ripbj6vk5dcbu06acu1dbakn79h3d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
